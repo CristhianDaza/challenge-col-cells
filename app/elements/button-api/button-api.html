@@ -1,0 +1,59 @@
+<dom-module id="button-api">
+  <template>
+    <style>
+      button {
+        padding: 10px;
+        background: darkslateblue;
+        color: white;
+        font-size: 15px;
+        border: 0;
+        border-radius: 10px;
+        cursor: pointer;
+        display: inline-block;
+      }
+      article {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+    </style>
+    <article>
+      <p>Generador de Gifs:</p>
+      <input type="text" id="generateGif" value="{{search::input}}">
+      <button on-tap="_goToGenerator">
+        <span>Buscar</span>
+      </button>
+    </article>
+  </template>
+
+  <script>
+    class ButtonApi extends Polymer.Element {
+      static get is() {
+        return 'button-api';
+      }
+
+      static get properties() {
+        return {
+          search: { type: String }
+        }
+      }
+
+      constructor() {
+        super();
+      }
+
+      _goToGenerator() {
+        this.dispatchEvent(new CustomEvent('generate-gif', {
+          bubbles: true,
+          composed: true,
+          detail: {
+            'search': this.search
+          }
+        }))
+      }
+    }
+
+    customElements.define(ButtonApi.is, ButtonApi);
+  </script>
+</dom-module>

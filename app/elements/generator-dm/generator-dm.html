@@ -1,0 +1,39 @@
+<dom-module id="generator-dm">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+  </template>
+  <script>
+    class GeneratorDM extends Polymer.Element {
+      static get is() {
+        return 'generator-dm';
+      }
+
+      async searchGif({ search }) {
+        const api = 'R4pJRLV1HjaGZknaZNm2s21JVBP1z19f';
+        const url = `https://api.giphy.com/v1/gifs/search?q=${search}&limit=12&api_key=${api}`;
+
+        const res = await fetch(url);
+        const { data } = await res.json();
+
+        const dataSource = data.map(data => {
+          return {
+            img: data.images?.original.url,
+            title: data.title
+          }
+        })
+
+        this.dispatchEvent(new CustomEvent('search-gif', {
+          detail: dataSource
+        }))
+
+        console.log(data)
+      }
+    }
+
+    customElements.define(GeneratorDM.is, GeneratorDM)
+  </script>
+</dom-module>

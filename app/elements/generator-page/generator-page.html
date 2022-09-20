@@ -1,0 +1,36 @@
+<dom-module id="generator-page">
+  <template>
+    <style>
+      img {
+        width: 250px;
+      }
+    </style>
+    <main>
+      <h1>Generador de Gif's</h1>
+      <p>Tu busqueda: <span>[[search]]</span></p>
+      <template is="dom-repeat" items="[[data]]">
+        <h2>[[item.title]]</h2>
+        <img src="[[item.img]]" alt="[[item.title]]">
+      </template>
+    </main>
+    <article>
+    </article>
+  </template>
+
+  <script>
+    class GeneratorPage extends Polymer.Element {
+      static get is() {
+        return 'generator-page';
+      }
+
+      static get properties() {
+        return {
+          search: { type: String },
+          data: { type: Array }
+        }
+      }
+    }
+
+    customElements.define(GeneratorPage.is, GeneratorPage)
+  </script>
+</dom-module>

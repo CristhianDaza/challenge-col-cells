@@ -25,6 +25,28 @@
     {
       "zone": "app__main",
       "type": "UI",
+      "familyPath": "../elements/button-api",
+      "tag": "button-api",
+      "properties": {
+        "cellsConnections": {
+          "in": {},
+          "out": {
+            "generate-channel": {
+              "bind": "generate-gif",
+              "link": {
+                "page": "generator",
+                "params": {
+                  "search": "searchGif"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "zone": "app__main",
+      "type": "UI",
       "familyPath": "../elements/my-greeting",
       "tag": "my-greeting",
       "properties": {

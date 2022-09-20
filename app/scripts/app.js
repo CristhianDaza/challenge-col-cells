@@ -5,7 +5,8 @@
     routes: {
       'login': '/',
       'another': '/another',
-      'routerExample': '/routerExample/:queryStringToPrettyUrl'
+      'routerExample': '/routerExample/:queryStringToPrettyUrl',
+      'generator': '/generator'
     }
   });
 }(document));
